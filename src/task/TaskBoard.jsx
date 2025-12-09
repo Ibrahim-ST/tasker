@@ -5,24 +5,27 @@ import TaskList from "./TaskList";
 import { useState } from "react";
 
 const TaskBoard = () => {
-  const defaultTask = {
-    id: crypto.randomUUID(),
-    title: "LWS Tasker",
-    description:
-      "Connect an existing API to a third-party database using secure methods and handle data exchange efficiently.",
-    tags: ["Web", "React", "API"],
-    priority: "High",
-    isFavorite: true,
-  };
-  const [tasks, setTasks] = useState([defaultTask]);
-  const [showAddModal, setShowAddModal] = useState(false);
+   const defaultTask = {
+     id: crypto.randomUUID(),
+     title: "Learn React Native",
+     description:
+       "I want to Learn React such thanI can treat it like my slave and make it do whatever I want to do.",
+     tags: ["web", "react", "js"],
+     priority: "High",
+     isFavorite: true,
+   };
+   const [tasks, setTasks] = useState([defaultTask]);
+   const [showAddModal, setShowAddModal] = useState(false);
 
+  function handleAddTask (task) {
+    console.log("Adding a task", task);
+  }
  
   return (
     <div>
       <section className="mb-20" id="tasks">
         {
-          showAddModal && <AddTaskModal />
+          showAddModal && <AddTaskModal onSave={handleAddTask}/>
         }
         <div className="container mx-auto">
           <div className="p-2 flex justify-end">
